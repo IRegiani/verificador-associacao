@@ -8,10 +8,10 @@
     "build": "react-scripts build",
     "lint": "eslint --config .eslintrc.js src/**/*.{js,jsx}",
     "test": "npm run lint && jest --config ./config/jest.config.js",
-    "test2": "eslint --init",
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@material-ui/core": "4.9.12",
     "cross-env": "7.0.2",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
@@ -20,7 +20,7 @@
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-import": "2.20.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-prettier": "3.1.3",
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "2.5.1",
     "jest": "25.5.3",
@@ -40,5 +40,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "react-styleguidist": "11.0.5"
+  }
 }
