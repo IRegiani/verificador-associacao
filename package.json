@@ -3,17 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "clean": "cross-env rm -rf ./node_modules && cross-env rm -rf ./reports",
+    "clean": "cross-env rm -rf ./coverage && cross-env rm -rf ./node_modules",
     "local": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint --config .eslintrc.js src/**/*.{js,jsx}",
-    "test": "npm run lint && jest --config ./config/jest.config.js",
+    "lint": "eslint --config .eslintrc.js --ext .jsx,.js ./src",
+    "test": "npm run lint && jest --config ./config/jest.config.js --coverage",
+    "test:no-cov": "npm run lint && jest --config ./config/jest.config.js",
+    "test:verbose": "npm run lint && jest --config ./config/jest.config-verbose.js",
     "eject": "react-scripts eject"
   },
   "dependencies": {
     "@material-ui/core": "4.9.12",
     "cross-env": "7.0.2",
-    "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
     "eslint": "6.8.0",
     "eslint-config-airbnb": "18.1.0",
@@ -26,7 +27,14 @@
     "jest": "25.5.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-redux": "7.2.0",
+    "redux": "4.0.5",
     "react-scripts": "3.4.1"
+  },
+  "devDependencies": {
+    "enzyme": "3.11.0",
+    "enzyme-to-json": "3.4.4",
+    "react-styleguidist": "11.0.5"
   },
   "browserslist": {
     "production": [
@@ -39,8 +47,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "react-styleguidist": "11.0.5"
   }
 }

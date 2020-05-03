@@ -3,9 +3,8 @@
 
 module.exports = {
   clearMocks: true,
-  collectCoverage: true,
-  collectCoverageFrom: ['**/*.{js,jsx}'],
-  coverageDirectory: '../coverage',
+  collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx}', '!<rootDir>/src/index.jsx'],
+  coverageDirectory: '<rootDir>/coverage',
   coverageReporters: [
     'text',
     'lcov',
@@ -19,20 +18,14 @@ module.exports = {
       statements: 80,
     },
   },
-  rootDir: '../src',
-  // setupFiles: ['./jest.setup.js'],
-  // runner: ?
-  // A path to a module which exports an async function that is triggered once before all test suites
-  // globalSetup: undefined,
-
-  // A set of global variables that need to be available in all test environments
-  // globals: {},
-
+  rootDir: '../',
   maxWorkers: '80%',
-  // snapshotSerializers: [],
+  // snapshotSerializers: ['enzyme-to-json/serializer'],
+  moduleDirectories: ['<rootDir>/node_modules'],
+  setupFilesAfterEnv: ['<rootDir>/config/jest.setup.js'],
   notify: true,
   notifyMode: 'failure',
   resetMocks: true,
-  runner: 'jest-runner',
   verbose: true,
+  // runner: 'jest-runner',
 };

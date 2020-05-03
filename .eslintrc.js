@@ -2,9 +2,9 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    jest: true,
   },
   extends: [
-    'plugin:react/recommended',
     'airbnb',
   ],
   globals: {
@@ -23,7 +23,8 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    'max-len': [ 'error', { code: 160 }],
+    'max-len': [ 'error', { code: 180 }],
     'react/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx' ]}],
   },
 };
