@@ -6,6 +6,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { store } from './state';
 import Routes from './routes';
 
+// TODO: refactor CSS
+import './index.css';
+
 render(
   <Provider store={store}>
     <BrowserRouter>
