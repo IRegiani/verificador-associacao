@@ -20,7 +20,6 @@ module.exports = {
   },
   plugins: [
     'react',
-    'prettier'
   ],
   rules: {
     'max-len': [ 'error', { code: 180 }],
