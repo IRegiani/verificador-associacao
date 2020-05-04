@@ -12,28 +12,25 @@ import Link from '@material-ui/core/Link';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 // import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
-import Icon from "@material-ui/core/Icon";
+import Icon from '@material-ui/core/Icon';
 import { useHistory } from 'react-router-dom';
 
 import { useStyles, styles } from './style';
 import Logo from './dceLogo.png';
 import googleIcon from './googleIcon.svg';
 
-// TODO: check form 
-const Copyright = () => {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://pt-br.facebook.com/dcecf/">
-        DCE FACAMP
-      </Link>
-      {' '}
-      {new Date().getFullYear()}
-      .
-    </Typography>
-  );
-}
-
+// TODO: check form
+const Copyright = () => (
+  <Typography variant="body2" color="textSecondary" align="center">
+    {'Copyright © '}
+    <Link color="inherit" href="https://pt-br.facebook.com/dcecf/">
+      DCE FACAMP
+    </Link>
+    {' '}
+    {new Date().getFullYear()}
+    .
+  </Typography>
+);
 
 const svgIcon = (
   <Icon>
@@ -43,7 +40,7 @@ const svgIcon = (
 
 const Login = () => {
   const classes = useStyles();
-  let history = useHistory();
+  const history = useHistory();
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -61,71 +58,71 @@ const Login = () => {
             Sign in
           </Typography>
           {/* <form className={classes.form} noValidate> */}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.GoogleLogin}
-              startIcon={svgIcon}
-            >
-              Sign In With Google
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Button color="primary" onClick={() => console.log('Open reset password modal')}>
-                  Forgot password?
-              </Button>
-              </Grid>
-              <Grid item>
-                <Button color="primary" onClick={() => { console.log('Redirect to sign up page'); history.push("/home");}}>
-                 Don't have an account? Sign Up
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email"
+            name="email"
+            autoComplete="email"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Senha"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Entrar
+          </Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.GoogleLogin}
+            startIcon={svgIcon}
+          >
+            Entrar com Google
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Button color="primary" onClick={() => console.log('Open reset password modal')}>
+                Esqueceu a senha?
               </Button>
             </Grid>
+            <Grid item>
+              <Button color="primary" onClick={() => { console.log('Redirect to sign up page'); history.push('/home'); }}>
+                Não tem acesso? Cadastre-se
+              </Button>
             </Grid>
+          </Grid>
           <Box mt={5}>
             <Copyright />
           </Box>
           {/* </form> */}
         </div>
+      </Grid>
     </Grid>
-    </Grid >
   );
-}
+};
 
 export default Login;
