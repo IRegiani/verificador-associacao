@@ -7,6 +7,5 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(() => {}, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(sagas);
 export {
-  // eslint-disable-next-line import/prefer-default-export
   store,
 };
