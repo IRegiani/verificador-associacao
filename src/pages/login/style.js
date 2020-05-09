@@ -51,6 +51,9 @@ const styles = {
     backgroundSize: 'contain',
     alignSelf: 'center',
   }),
+  lock: {
+    color: 'rgba(217,147,5,1)',
+  },
 };
 
 export {

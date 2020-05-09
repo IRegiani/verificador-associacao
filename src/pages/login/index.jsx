@@ -47,12 +47,11 @@ const Login = () => {
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image2}>
         <div style={styles.logo(Logo)} />
-        {/* <img src={googleIcon} alt="googleIcon" /> */}
       </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <LockOutlinedIcon style={styles.lock} />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
