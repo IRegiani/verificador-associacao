@@ -28,8 +28,8 @@ module.exports = {
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleDirectories: ['<rootDir>/node_modules'],
   setupFilesAfterEnv: ['<rootDir>/config/jest.setup.js'],
-  notify: true,
-  notifyMode: 'failure',
+  // notify: true,
+  // notifyMode: 'failure',
   resetMocks: true,
   verbose: true,
   transform: {
