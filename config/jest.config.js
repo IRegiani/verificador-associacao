@@ -20,12 +20,16 @@ module.exports = {
   },
   rootDir: '../',
   maxWorkers: '80%',
-  // snapshotSerializers: ['enzyme-to-json/serializer'],
+  snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleDirectories: ['<rootDir>/node_modules'],
   setupFilesAfterEnv: ['<rootDir>/config/jest.setup.js'],
   notify: true,
   notifyMode: 'failure',
   resetMocks: true,
   verbose: true,
-  // runner: 'jest-runner',
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
+    '^.+\\.svg$': 'jest-svg-transformer',
+    '.+\\.(css|styl|less|sass|scss)$': '<rootDir>/node_modules/jest-css-modules-transform',
+  },
 };

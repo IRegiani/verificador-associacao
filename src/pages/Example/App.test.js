@@ -2,9 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
 
-describe.skip('App', () => {
+describe('App', () => {
   test('renders app', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper).toBeDEfined();
+    expect(wrapper).toBeDefined();
+    expect(wrapper).toMatchSnapshot();
   });
 });
