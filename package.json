@@ -12,7 +12,6 @@
     "test:update": "jest --config ./config/jest.config.js --coverage --updateSnapshot",
     "test:no-cov": "npm run lint && jest --config ./config/jest.config.js",
     "styleguide": "styleguidist server",
-    "verifyWS": "ls",
     "eject": "react-scripts eject"
   },
   "dependencies": {
