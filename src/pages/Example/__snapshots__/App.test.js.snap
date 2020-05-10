@@ -10,7 +10,7 @@ exports[`App renders app 1`] = `
     <img
       alt="logo"
       className="App-logo"
-      src={[Function]}
+      src="logo.svg"
     />
     <p>
       Edit

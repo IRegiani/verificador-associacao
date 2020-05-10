@@ -11,7 +11,6 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-// import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
 import Icon from '@material-ui/core/Icon';
 import { useHistory } from 'react-router-dom';
 
@@ -104,12 +103,13 @@ const Login = () => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Button color="primary" onClick={() => console.log('Open reset password modal')}>
+              <Button color="primary" id="forgotPasswordButton" onClick={() => console.log('Open reset password modal')}>
                 Esqueceu a senha?
               </Button>
             </Grid>
             <Grid item>
-              <Button color="primary" onClick={() => { console.log('Redirect to sign up page'); history.push('/home'); }}>
+              {/* history push arg is just for test, should redirect */}
+              <Button color="primary" id="signUpButton" onClick={() => { console.log('Redirect to sign up page'); history.push('/home'); }}>
                 Não tem acesso? Cadastre-se
               </Button>
             </Grid>

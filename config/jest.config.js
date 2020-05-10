@@ -33,8 +33,7 @@ module.exports = {
   resetMocks: true,
   verbose: true,
   transform: {
-    '^.+\\.jsx?$': 'babel-jest',
-    '^.+\\.svg$': 'jest-svg-transformer',
+    '^.+\\.(jsx|js)$': 'babel-jest',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/config/fileTransformer.js',
     '.+\\.(css|styl|less|sass|scss)$': '<rootDir>/node_modules/jest-css-modules-transform',
   },

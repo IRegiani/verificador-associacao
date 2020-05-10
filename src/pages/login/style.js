@@ -53,7 +53,7 @@ const styles = {
     alignSelf: 'center',
   }),
   lock: {
-    color: 'rgba(217,147,5,1)',
+    // color: 'rgba(217,147,5,1)',
   },
 };
 

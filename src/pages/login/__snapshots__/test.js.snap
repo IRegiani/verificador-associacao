@@ -376,11 +376,7 @@ exports[`LoginPage renders app correctly 1`] = `
         className="makeStyles-avatar-5"
       >
         <LockOutlinedIcon
-          style={
-            Object {
-              "color": "rgba(217,147,5,1)",
-            }
-          }
+          style={Object {}}
         />
       </WithStyles(ForwardRef(Avatar))>
       <WithStyles(ForwardRef(Typography))
@@ -437,7 +433,7 @@ exports[`LoginPage renders app correctly 1`] = `
           <WithStyles(ForwardRef(Icon))>
             <img
               alt="googleIcon"
-              src={[Function]}
+              src="googleIcon.svg"
             />
           </WithStyles(ForwardRef(Icon))>
         }
@@ -455,6 +451,7 @@ exports[`LoginPage renders app correctly 1`] = `
         >
           <WithStyles(ForwardRef(Button))
             color="primary"
+            id="forgotPasswordButton"
             onClick={[Function]}
           >
             Esqueceu a senha?
@@ -465,6 +462,7 @@ exports[`LoginPage renders app correctly 1`] = `
         >
           <WithStyles(ForwardRef(Button))
             color="primary"
+            id="signUpButton"
             onClick={[Function]}
           >
             Não tem acesso? Cadastre-se
