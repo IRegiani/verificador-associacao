@@ -16,11 +16,11 @@ import Icon from '@material-ui/core/Icon';
 import { useHistory } from 'react-router-dom';
 
 import { useStyles, styles } from './style';
-import Logo from './dceLogo.png';
-import googleIcon from './googleIcon.svg';
+import Logo from './assets/dceLogo.png';
+import googleIcon from './assets/googleIcon.svg';
 
 // TODO: check form
-const Copyright = () => (
+export const Copyright = () => (
   <Typography variant="body2" color="textSecondary" align="center">
     {'Copyright © '}
     <Link color="inherit" href="https://pt-br.facebook.com/dcecf/">

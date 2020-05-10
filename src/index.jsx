@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import { store } from './state';
+import { store } from './state/store';
 import Routes from './routes';
 
 // TODO: refactor CSS

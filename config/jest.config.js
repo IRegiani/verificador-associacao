@@ -9,13 +9,18 @@ module.exports = {
     'text',
     'lcov',
     'clover',
+    'text-summary',
   ],
   coverageThreshold: {
     global: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: 80,
+      // branches: 80,
+      // functions: 80,
+      // lines: 80,
+      // statements: 80,
+      branches: 0,
+      functions: 70,
+      lines: 60,
+      statements: 60,
     },
   },
   rootDir: '../',
@@ -30,6 +35,7 @@ module.exports = {
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
     '^.+\\.svg$': 'jest-svg-transformer',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/config/fileTransformer.js',
     '.+\\.(css|styl|less|sass|scss)$': '<rootDir>/node_modules/jest-css-modules-transform',
   },
 };
