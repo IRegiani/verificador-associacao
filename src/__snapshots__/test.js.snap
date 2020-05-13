@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes renders app correctly 1`] = `
+<Switch>
+  <Route
+    exact={true}
+    path="/"
+  >
+    <Redirect
+      to="/home"
+    />
+  </Route>
+  <Route
+    path="/home"
+    render={[Function]}
+  />
+  <Route
+    path="/login"
+    render={[Function]}
+  />
+</Switch>
+`;
