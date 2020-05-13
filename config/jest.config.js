@@ -24,7 +24,6 @@ module.exports = {
     },
   },
   rootDir: '../',
-  maxWorkers: '80%',
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleDirectories: ['<rootDir>/node_modules'],
   setupFilesAfterEnv: ['<rootDir>/config/jest.setup.js'],
