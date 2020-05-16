@@ -1,6 +1,5 @@
 name: Unit Tests with coverage
 
-
 # job level conditions don't seem to work at the moment
 # https://github.community/t5/GitHub-Actions/Status-of-workflows-with-no-running-jobs/td-p/37160
 
@@ -34,4 +33,4 @@ jobs:
       if: "!contains(github.event.head_commit.message, '[skip-tests]')"
       with:
         project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-        coverage-reports: coverage/clover.xml
+        coverage-reports: coverage/lcov.info
