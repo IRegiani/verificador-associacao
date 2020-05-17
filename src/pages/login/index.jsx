@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,13 +15,15 @@ import Link from '@material-ui/core/Link';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
-import { useHistory } from 'react-router-dom';
+
+import { requestLoginAction } from '../../state/actions';
 
 import { useStyles, styles } from './style';
-import Logo from './assets/dceLogo.png';
-import googleIcon from './assets/googleIcon.svg';
+import Logo from '../../static/dceLogo.png';
+import googleIcon from '../../static/googleIcon.svg';
 
 // TODO: check form
+// TODO: add validation
 export const Copyright = () => (
   <Typography variant="body2" color="textSecondary" align="center">
     {'Copyright © '}
@@ -40,6 +45,15 @@ const svgIcon = (
 const Login = () => {
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [rememberOption, setRememberOption] = useState(false);
+
+  const onEmailChange = (evt) => setEmail(evt.target.value);
+  const onPasswordChange = (evt) => setPassword(evt.target.value);
+  const onCheckBoxCheck = (evt) => setRememberOption(evt.target.checked);
+  const onSubmitClick = () => email && password && dispatch(requestLoginAction(email, password, rememberOption));
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -66,6 +80,7 @@ const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={onEmailChange}
           />
           <TextField
             variant="outlined"
@@ -77,9 +92,10 @@ const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={onPasswordChange}
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember" color="primary" onChange={onCheckBoxCheck} />}
             label="Remember me"
           />
           <Button
@@ -87,6 +103,7 @@ const Login = () => {
             fullWidth
             variant="contained"
             color="primary"
+            onClick={onSubmitClick}
             className={classes.submit}
           >
             Entrar
