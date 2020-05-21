@@ -1,5 +1,9 @@
-// eslint-disable-next-line no-empty-function
-function* sagas() {
-}
+import { all } from 'redux-saga/effects';
 
-export default sagas;
+import watchAuthSagas from './auth';
+
+export default function* rootSaga() {
+  yield all([
+    watchAuthSagas(),
+  ]);
+}

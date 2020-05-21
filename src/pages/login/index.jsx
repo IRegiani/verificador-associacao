@@ -96,7 +96,7 @@ const Login = () => {
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" onChange={onCheckBoxCheck} />}
-            label="Remember me"
+            label="Guardar sessão"
           />
           <Button
             type="submit"
