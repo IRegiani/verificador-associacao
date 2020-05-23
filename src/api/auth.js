@@ -26,14 +26,16 @@ const get = (url) => createRequest(url, 'GET');
 const post = (url, data) => createRequest(url, 'POST', data);
 */
 
-import { userMockLoginResponse } from './mocks';
+import { mockedPost } from './mocks';
+import { getConfig } from '../tempConfig';
 
 const login = (email, password) => {
   // get url from a future config file
-  // const url = 'getConfig().SERVICE_URL+'/login'
+  const url = `${getConfig().SERVICE_URL}/login`;
   // return post(url, { email, password })
+  // eslint-disable-next-line no-console
   console.log(`Mocked call to login with email=${email} and password=${password}`);
-  return userMockLoginResponse(email, password);
+  return mockedPost(url, { email, password });
 };
 
 export {

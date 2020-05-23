@@ -5,6 +5,13 @@ const userMockLoginResponse = (email, password) => {
   throw new Error('Invalid email or password');
 };
 
+const mockedPost = (url, body) => {
+  switch (url.substring(17)) {
+    case '/login': return userMockLoginResponse(body.email, body.password);
+    default: throw new Error('Bad request');
+  }
+};
+
 export {
-  userMockLoginResponse,
+  mockedPost,
 };

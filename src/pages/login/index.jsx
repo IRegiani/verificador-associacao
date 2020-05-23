@@ -57,9 +57,11 @@ const Login = () => {
   const onCheckBoxCheck = (evt) => setRememberOption(evt.target.checked);
   const onClick = (evt) => (evt.target.name === 'email' ? setEmailError(false) : setPasswordError(false));
   const onSubmitClick = () => {
-    if (!email) setEmailError(true);
+    console.log('email', /\S+@\S+\.\S+/.test(email));
+    const isEmailValid = /\S+@\S+\.\S+/.test(email);
+    if (!isEmailValid) setEmailError(true);
     if (!password) setPasswordError(true);
-    if (password && email) dispatch(requestLoginAction(email, password, rememberOption));
+    if (password && email && isEmailValid) dispatch(requestLoginAction(email, password, rememberOption));
   };
   const onPasswordKeyPress = (evt) => (evt.key === 'Enter' ? onSubmitClick() : null);
 

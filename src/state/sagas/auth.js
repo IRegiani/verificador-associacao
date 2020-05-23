@@ -10,7 +10,7 @@ export function* fetchAuthentication(action) {
     const user = yield call(login, action.payload.email, action.payload.password);
     yield put(requestLoginActionSuccess(user));
   } catch (err) {
-    yield put(requestLoginActionFailure(err));
+    yield put(requestLoginActionFailure(err.message));
   }
 }
 
