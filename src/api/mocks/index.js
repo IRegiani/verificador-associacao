@@ -1,7 +1,10 @@
 import userData from './user.json';
 
-const userMockResponse = userData;
+const userMockLoginResponse = (email, password) => {
+  if (email === 'test@test.com' && password === 'password') return userData;
+  throw new Error('Invalid email or password');
+};
 
 export {
-  userMockResponse,
+  userMockLoginResponse,
 };

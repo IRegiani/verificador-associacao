@@ -6,7 +6,7 @@ import {
 
 export const createAction = (type, payload, options) => ({ type, payload, options });
 
-export const requestLoginAction = (username, password, rememberOption) => createAction(REQUEST_LOGIN_ACTION, { username, password, rememberOption });
+export const requestLoginAction = (email, password, rememberOption) => createAction(REQUEST_LOGIN_ACTION, { email, password, rememberOption });
 
 export const requestLoginActionSuccess = (user) => createAction(REQUEST_LOGIN_ACTION_SUCCESS, user);
 

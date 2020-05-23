@@ -29,9 +29,15 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+  error: {
+    fill: theme.palette.secondary.main,
+    paddingBottom: '4px',
+  },
+  errorContainer: {
+    margin: 0,
+    justifyContent: 'center',
+    display: 'flex',
+    color: theme.palette.secondary.main,
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -52,9 +58,6 @@ const styles = {
     backgroundSize: 'contain',
     alignSelf: 'center',
   }),
-  lock: {
-    // color: 'rgba(217,147,5,1)',
-  },
 };
 
 export {

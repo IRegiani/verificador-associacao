@@ -7,7 +7,7 @@ import { requestLoginActionSuccess, requestLoginActionFailure } from '../actions
 
 export function* fetchAuthentication(action) {
   try {
-    const user = yield call(login, action.payload.username, action.payload.password);
+    const user = yield call(login, action.payload.email, action.payload.password);
     yield put(requestLoginActionSuccess(user));
   } catch (err) {
     yield put(requestLoginActionFailure(err));

@@ -1,29 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import ErrorOutlineOutlined from '@material-ui/icons/ErrorOutlineOutlined';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 
 import { requestLoginAction } from '../../state/actions';
+import { loginErrorSelector } from '../../state/selectors';
 
 import { useStyles, styles } from './style';
 import Logo from '../../static/dceLogo.png';
 import googleIcon from '../../static/googleIcon.svg';
 
-// TODO: check form
-// TODO: add validation
 export const Copyright = () => (
   <Typography variant="body2" color="textSecondary" align="center">
     {'Copyright © '}
@@ -46,14 +45,30 @@ const Login = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const hasLoginError = useSelector(loginErrorSelector);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [rememberOption, setRememberOption] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const onEmailChange = (evt) => setEmail(evt.target.value);
   const onPasswordChange = (evt) => setPassword(evt.target.value);
   const onCheckBoxCheck = (evt) => setRememberOption(evt.target.checked);
-  const onSubmitClick = () => email && password && dispatch(requestLoginAction(email, password, rememberOption));
+  const onClick = (evt) => (evt.target.name === 'email' ? setEmailError(false) : setPasswordError(false));
+  const onSubmitClick = () => {
+    if (!email) setEmailError(true);
+    if (!password) setPasswordError(true);
+    if (password && email) dispatch(requestLoginAction(email, password, rememberOption));
+  };
+  const onPasswordKeyPress = (evt) => (evt.key === 'Enter' ? onSubmitClick() : null);
+
+  useEffect(() => {
+    if (hasLoginError) {
+      setEmailError(true);
+      setPasswordError(true);
+    }
+  }, [hasLoginError]);
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -64,12 +79,11 @@ const Login = () => {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon style={styles.lock} />
+            <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Entrar
           </Typography>
-          {/* <form className={classes.form} noValidate> */}
           <TextField
             variant="outlined"
             margin="normal"
@@ -80,7 +94,9 @@ const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            error={emailError}
             onChange={onEmailChange}
+            onClick={onClick}
           />
           <TextField
             variant="outlined"
@@ -92,12 +108,21 @@ const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            error={passwordError}
             onChange={onPasswordChange}
+            onClick={onClick}
+            onKeyPress={onPasswordKeyPress}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" onChange={onCheckBoxCheck} />}
-            label="Guardar sessão"
-          />
+          <div>
+            <Checkbox value="remember" color="primary" onChange={onCheckBoxCheck} />
+            Guardar sessão
+          </div>
+          {hasLoginError && (
+            <div className={classes.errorContainer}>
+              <ErrorOutlineOutlined className={classes.error} />
+              Erro de email ou senha ao entrar
+            </div>
+          )}
           <Button
             type="submit"
             fullWidth
@@ -134,7 +159,6 @@ const Login = () => {
           <Box mt={5}>
             <Copyright />
           </Box>
-          {/* </form> */}
         </div>
       </Grid>
     </Grid>

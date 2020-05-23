@@ -26,14 +26,14 @@ const get = (url) => createRequest(url, 'GET');
 const post = (url, data) => createRequest(url, 'POST', data);
 */
 
-import { userMockResponse } from './mocks';
+import { userMockLoginResponse } from './mocks';
 
-const login = (username, password) => {
+const login = (email, password) => {
   // get url from a future config file
   // const url = 'getConfig().SERVICE_URL+'/login'
-  // return post(url, { username, password })
-  console.log(`Mocked call to login with username=${username} and password=${password}`);
-  return userMockResponse;
+  // return post(url, { email, password })
+  console.log(`Mocked call to login with email=${email} and password=${password}`);
+  return userMockLoginResponse(email, password);
 };
 
 export {
