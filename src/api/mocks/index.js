@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import userData from './user.json';
 
 const userMockLoginResponse = (email, password) => {

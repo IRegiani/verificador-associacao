@@ -7,3 +7,5 @@ configure({ adapter: new Adapter() });
 
 console.log = () => null;
 console.error = () => null;
+
+// TODO: add mocked global date

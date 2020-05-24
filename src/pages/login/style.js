@@ -4,16 +4,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
   },
-  image: {
+  image2: {
     backgroundImage: 'url(https://source.unsplash.com/random)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === theme.palette.grey[50],
-    // theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
-  image2: {
+  image: {
     alignSelf: 'center',
     height: '100%',
     display: 'flex',

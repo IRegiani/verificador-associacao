@@ -19,7 +19,7 @@ exports[`LoginPage renders Copyright component correctly 1`] = `
 </WithStyles(ForwardRef(Typography))>
 `;
 
-exports[`LoginPage renders app correctly 1`] = `
+exports[`LoginPage renders correctly 1`] = `
 <WithStyles(ForwardRef(Grid))
   className="makeStyles-root-1"
   component="main"
@@ -27,7 +27,7 @@ exports[`LoginPage renders app correctly 1`] = `
 >
   <WithStyles(CssBaseline) />
   <WithStyles(ForwardRef(Grid))
-    className="makeStyles-image2-3"
+    className="makeStyles-image-3"
     item={true}
     md={7}
     sm={4}
@@ -375,58 +375,72 @@ exports[`LoginPage renders app correctly 1`] = `
       <WithStyles(ForwardRef(Avatar))
         className="makeStyles-avatar-5"
       >
-        <LockOutlinedIcon
-          style={Object {}}
-        />
+        <LockOutlinedIcon />
       </WithStyles(ForwardRef(Avatar))>
       <WithStyles(ForwardRef(Typography))
         component="h1"
         variant="h5"
       >
-        Sign in
+        Entrar
       </WithStyles(ForwardRef(Typography))>
       <WithStyles(ForwardRef(TextField))
         autoComplete="email"
         autoFocus={true}
+        error={false}
         fullWidth={true}
         id="email"
         label="Email"
         margin="normal"
         name="email"
+        onChange={[Function]}
+        onClick={[Function]}
         required={true}
         variant="outlined"
       />
       <WithStyles(ForwardRef(TextField))
         autoComplete="current-password"
+        error={false}
         fullWidth={true}
         id="password"
         label="Senha"
         margin="normal"
         name="password"
+        onChange={[Function]}
+        onClick={[Function]}
+        onKeyPress={[Function]}
         required={true}
         type="password"
         variant="outlined"
       />
-      <WithStyles(ForwardRef(FormControlLabel))
-        control={
-          <WithStyles(ForwardRef(Checkbox))
-            color="primary"
-            value="remember"
-          />
-        }
-        label="Remember me"
-      />
+      <div>
+        <WithStyles(ForwardRef(Checkbox))
+          color="primary"
+          id="rememberMe"
+          onChange={[Function]}
+          value="remember"
+        />
+        Guardar sessão
+      </div>
+      <div
+        className="makeStyles-errorContainer-7"
+      >
+        <ErrorOutlineOutlinedIcon
+          className="makeStyles-error-6"
+        />
+        Erro de email ou senha ao entrar
+      </div>
       <WithStyles(ForwardRef(Button))
-        className="makeStyles-submit-7"
+        className="makeStyles-submit-8"
         color="primary"
         fullWidth={true}
-        type="submit"
+        id="submitButton"
+        onClick={[Function]}
         variant="contained"
       >
         Entrar
       </WithStyles(ForwardRef(Button))>
       <WithStyles(ForwardRef(Button))
-        className="makeStyles-GoogleLogin-8"
+        className="makeStyles-GoogleLogin-9"
         color="primary"
         fullWidth={true}
         startIcon={
@@ -437,7 +451,6 @@ exports[`LoginPage renders app correctly 1`] = `
             />
           </WithStyles(ForwardRef(Icon))>
         }
-        type="submit"
         variant="contained"
       >
         Entrar com Google

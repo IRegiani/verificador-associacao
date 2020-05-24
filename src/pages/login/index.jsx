@@ -57,14 +57,14 @@ const Login = () => {
   const onCheckBoxCheck = (evt) => setRememberOption(evt.target.checked);
   const onClick = (evt) => (evt.target.name === 'email' ? setEmailError(false) : setPasswordError(false));
   const onSubmitClick = () => {
-    console.log('email', /\S+@\S+\.\S+/.test(email));
     const isEmailValid = /\S+@\S+\.\S+/.test(email);
     if (!isEmailValid) setEmailError(true);
     if (!password) setPasswordError(true);
-    if (password && email && isEmailValid) dispatch(requestLoginAction(email, password, rememberOption));
+    if (password && isEmailValid) dispatch(requestLoginAction(email, password, rememberOption));
   };
   const onPasswordKeyPress = (evt) => (evt.key === 'Enter' ? onSubmitClick() : null);
 
+  console.debug('hasLoginError', hasLoginError);
   useEffect(() => {
     if (hasLoginError) {
       setEmailError(true);
@@ -75,7 +75,7 @@ const Login = () => {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image2}>
+      <Grid item xs={false} sm={4} md={7} className={classes.image}>
         <div style={styles.logo(Logo)} />
       </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -116,7 +116,7 @@ const Login = () => {
             onKeyPress={onPasswordKeyPress}
           />
           <div>
-            <Checkbox value="remember" color="primary" onChange={onCheckBoxCheck} />
+            <Checkbox id="rememberMe" value="remember" color="primary" onChange={onCheckBoxCheck} />
             Guardar sessão
           </div>
           {hasLoginError && (
@@ -126,7 +126,7 @@ const Login = () => {
             </div>
           )}
           <Button
-            type="submit"
+            id="submitButton"
             fullWidth
             variant="contained"
             color="primary"
@@ -136,7 +136,6 @@ const Login = () => {
             Entrar
           </Button>
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
@@ -147,13 +146,13 @@ const Login = () => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Button color="primary" id="forgotPasswordButton" onClick={() => console.log('Open reset password modal')}>
+              <Button color="primary" id="forgotPasswordButton" onClick={() => { console.log('Open reset password modal'); history.push('/resetPassword'); }}>
                 Esqueceu a senha?
               </Button>
             </Grid>
             <Grid item>
-              {/* history push arg is just for test, should redirect */}
-              <Button color="primary" id="signUpButton" onClick={() => { console.log('Redirect to sign up page'); history.push('/home'); }}>
+              {/* <Button color="primary" id="signUpButton" onClick={() => { console.log('Redirect to sign up page'); history.push('/home'); }}> */}
+              <Button color="primary" id="signUpButton" onClick={() => { console.log('Redirect to sign up page'); history.push('/signUp'); }}>
                 Não tem acesso? Cadastre-se
               </Button>
             </Grid>
