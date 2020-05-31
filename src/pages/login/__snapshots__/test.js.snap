@@ -27,7 +27,7 @@ exports[`LoginPage renders correctly 1`] = `
 >
   <WithStyles(CssBaseline) />
   <WithStyles(ForwardRef(Grid))
-    className="makeStyles-image-3"
+    className="makeStyles-background-2"
     item={true}
     md={7}
     sm={4}
@@ -370,10 +370,10 @@ exports[`LoginPage renders correctly 1`] = `
     xs={12}
   >
     <div
-      className="makeStyles-paper-4"
+      className="makeStyles-paper-3"
     >
       <WithStyles(ForwardRef(Avatar))
-        className="makeStyles-avatar-5"
+        className="makeStyles-avatar-4"
       >
         <LockOutlinedIcon />
       </WithStyles(ForwardRef(Avatar))>
@@ -422,15 +422,15 @@ exports[`LoginPage renders correctly 1`] = `
         Guardar sessão
       </div>
       <div
-        className="makeStyles-errorContainer-7"
+        className="makeStyles-errorContainer-6"
       >
         <ErrorOutlineOutlinedIcon
-          className="makeStyles-error-6"
+          className="makeStyles-error-5"
         />
         Erro de email ou senha ao entrar
       </div>
       <WithStyles(ForwardRef(Button))
-        className="makeStyles-submit-8"
+        className="makeStyles-submit-7"
         color="primary"
         fullWidth={true}
         id="submitButton"
@@ -440,7 +440,7 @@ exports[`LoginPage renders correctly 1`] = `
         Entrar
       </WithStyles(ForwardRef(Button))>
       <WithStyles(ForwardRef(Button))
-        className="makeStyles-GoogleLogin-9"
+        className="makeStyles-GoogleLogin-8"
         color="primary"
         fullWidth={true}
         startIcon={

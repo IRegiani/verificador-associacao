@@ -64,7 +64,7 @@ const Login = () => {
   };
   const onPasswordKeyPress = (evt) => (evt.key === 'Enter' ? onSubmitClick() : null);
 
-  console.debug('hasLoginError', hasLoginError);
+  // console.debug('hasLoginError', hasLoginError);
   useEffect(() => {
     if (hasLoginError) {
       setEmailError(true);
@@ -75,7 +75,7 @@ const Login = () => {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image}>
+      <Grid item xs={false} sm={4} md={7} className={classes.background}>
         <div style={styles.logo(Logo)} />
       </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
