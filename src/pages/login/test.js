@@ -14,14 +14,10 @@ jest.mock('react-router-dom', () => ({
   }),
 }));
 
-jest.mock('react-redux', () => {
-  const reactRedux = jest.requireActual('react-redux');
-  return {
-    ...reactRedux,
-    useDispatch: () => jest.fn(),
-    useSelector: jest.fn(),
-  };
-});
+jest.mock('react-redux', () => ({
+  useDispatch: () => jest.fn(),
+  useSelector: jest.fn(),
+}));
 jest.mock('../../state/actions');
 
 describe('LoginPage', () => {
