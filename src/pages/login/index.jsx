@@ -64,7 +64,6 @@ const Login = () => {
   };
   const onPasswordKeyPress = (evt) => (evt.key === 'Enter' ? onSubmitClick() : null);
 
-  // console.debug('hasLoginError', hasLoginError);
   useEffect(() => {
     if (hasLoginError) {
       setEmailError(true);
@@ -151,7 +150,6 @@ const Login = () => {
               </Button>
             </Grid>
             <Grid item>
-              {/* <Button color="primary" id="signUpButton" onClick={() => { console.log('Redirect to sign up page'); history.push('/home'); }}> */}
               <Button color="primary" id="signUpButton" onClick={() => { console.log('Redirect to sign up page'); history.push('/signUp'); }}>
                 Não tem acesso? Cadastre-se
               </Button>

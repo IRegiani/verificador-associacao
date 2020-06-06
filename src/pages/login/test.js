@@ -1,5 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { useSelector } from 'react-redux';
+import { shallow, mount } from 'enzyme';
+import ErrorOutlineOutlined from '@material-ui/icons/ErrorOutlineOutlined';
 
 import { requestLoginAction } from '../../state/actions';
 
@@ -12,11 +14,14 @@ jest.mock('react-router-dom', () => ({
   }),
 }));
 
-const mockedUseSelector = jest.fn();
-jest.mock('react-redux', () => ({
-  useDispatch: () => jest.fn(),
-  useSelector: () => mockedUseSelector,
-}));
+jest.mock('react-redux', () => {
+  const reactRedux = jest.requireActual('react-redux');
+  return {
+    ...reactRedux,
+    useDispatch: () => jest.fn(),
+    useSelector: jest.fn(),
+  };
+});
 jest.mock('../../state/actions');
 
 describe('LoginPage', () => {
@@ -98,26 +103,33 @@ describe('LoginPage', () => {
     expect(requestLoginAction).not.toHaveBeenCalled();
   });
 
-  test.skip('should show email/password error', () => {
-    // const wrapper = mount(<LoginPage />);
-    const useEffectSpy = jest.spyOn(React, 'useEffect');
-    const wrapper = shallow(<LoginPage />);
-    console.debug('useEffectSpy1', useEffectSpy.mock.calls);
+  test('should show email/password error', () => {
     const mockedEmail = 'mockedEmail@email.com';
     const mockedPassword = 'mockedPassword';
+    useSelector.mockImplementation(() => undefined);
 
-    wrapper.find('#email').props().onChange(mockedEvent(mockedEmail));
-    wrapper.find('#password').props().onChange(mockedEvent(mockedPassword));
-    // wrapper.find('#submitButton').props().onClick();
+    const wrapper = mount(<LoginPage />);
 
-    // expect(requestLoginAction).toHaveBeenCalledWith(mockedEmail, mockedPassword, false);
-    expect(wrapper.find('#email').props().error).toBe(false);
-    expect(wrapper.find('#password').props().error).toBe(false);
+    wrapper.find('#email').at(0).props().onChange(mockedEvent(mockedEmail));
+    wrapper.find('#password').at(0).props().onChange(mockedEvent(mockedPassword));
+    wrapper.update();
+    wrapper.find('#submitButton').at(0).props().onClick();
 
-    // mockedUseSelector.mockImplementation(() => 'login error');
-    console.debug('useEffectSpy2', useEffectSpy.mock.calls);
+    expect(requestLoginAction).toHaveBeenCalledWith(mockedEmail, mockedPassword, false);
+    expect(wrapper.find('#email').at(0).props().error).toBe(false);
+    expect(wrapper.find('#password').at(0).props().error).toBe(false);
+    expect(wrapper.find(ErrorOutlineOutlined)).toEqual({});
 
-    expect(wrapper.find('#email').props().error).toBe(true);
-    expect(wrapper.find('#password').props().error).toBe(true);
+    useSelector.mockImplementation(() => 'login error');
+    wrapper.find('#email').at(0).props().onChange(mockedEvent());
+    wrapper.find('#password').at(0).props().onChange(mockedEvent());
+    wrapper.setProps(); // updates the useSelector
+    wrapper.update(); // updates the useState
+    wrapper.find('#submitButton').at(0).props().onClick();
+
+    expect(wrapper.find('#email').at(0).props().error).toBe(true);
+    expect(wrapper.find('#password').at(0).props().error).toBe(true);
+    expect(wrapper.find(ErrorOutlineOutlined).children()).toBeDefined();
+    expect(requestLoginAction).toHaveBeenCalledTimes(1);
   });
 });
