@@ -26,5 +26,6 @@ module.exports = {
     'react/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx' ]}],
     'import/prefer-default-export': "off",
+    'object-curly-newline': ["off"],
   },
 };

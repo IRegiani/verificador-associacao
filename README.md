@@ -24,6 +24,6 @@
 1. After agreeing with the others collaborators which task you are going to do, goto the **master** branch
 2. Create a new branch and do your work there
 3. Upon finishing don't forget Unit Tests. To test, run `npm run test`. If it fails, you must fix them in order to proceed
-4. If everything is ok, open a new Pull Request to **development`**. Your PR is going to be blocked if the previous step is failing
+4. If everything is ok, open a new Pull Request to **development**. Your PR is going to be blocked if the previous step is failing
 
 Currently, there is no back-end implemented, this will be updated when it happens

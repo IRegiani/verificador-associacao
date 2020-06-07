@@ -1,26 +1,34 @@
-/* istanbul ignore file */
-// TODO: reavaliate if how teh store is constructed and impact on test
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose as reduxCompose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { logger } from 'redux-logger';
+import { createLogger } from 'redux-logger';
 
-import sagas from '../sagas';
-import reducers from '../reducers';
+import rootSaga from '../sagas';
+import rootReducer from '../reducers';
 
-const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
+const configureStore = () => {
+  const sagaMiddleware = createSagaMiddleware();
+  const middlewares = [sagaMiddleware];
+  let devToolsCompose;
 
-// TODO: verify react-router and devtools middlewares, saga enhancers
+  // TODO: verify react-router and devtools middlewares, saga enhancers
 
-if (process.env.NODE_ENV === 'development') middlewares.push(logger);
+  if (process.env.NODE_ENV === ('development')) {
+    const logger = createLogger({ collapsed: true });
+    middlewares.push(logger);
+    devToolsCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+  }
 
-const store = createStore(
-  reducers,
-  applyMiddleware(...middlewares),
-);
+  const compose = devToolsCompose || reduxCompose;
 
-sagaMiddleware.run(sagas);
+  const store = createStore(
+    rootReducer,
+    compose(applyMiddleware(...middlewares)),
+  );
+  sagaMiddleware.run(rootSaga);
+
+  return store;
+};
 
 export {
-  store,
+  configureStore,
 };
