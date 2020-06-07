@@ -33,4 +33,4 @@ jobs:
       if: "!contains(github.event.head_commit.message, '[skip-tests]')"
       with:
         project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-        coverage-reports: coverage/lcov.info,  coverage/coverage-final.json
+        coverage-reports: coverage/lcov.info

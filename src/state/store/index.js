@@ -1,34 +1,34 @@
-// TODO: reavaliate if how teh store is constructed and impact on test
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose as reduxCompose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger';
 
 import rootSaga from '../sagas';
 import rootReducer from '../reducers';
 
-const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
-let devToolsComposer;
+const configureStore = () => {
+  const sagaMiddleware = createSagaMiddleware();
+  const middlewares = [sagaMiddleware];
+  let devToolsCompose;
 
-// TODO: verify react-router and devtools middlewares, saga enhancers
+  // TODO: verify react-router and devtools middlewares, saga enhancers
 
-if (process.env.NODE_ENV === ('development' || 'local')) {
-  const logger = createLogger({
-    collapsed: true,
-  });
-  middlewares.push(logger);
-  devToolsComposer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-}
+  if (process.env.NODE_ENV === ('development')) {
+    const logger = createLogger({ collapsed: true });
+    middlewares.push(logger);
+    devToolsCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+  }
 
-const composeEnhancer = devToolsComposer || compose;
+  const compose = devToolsCompose || reduxCompose;
 
-const store = createStore(
-  rootReducer,
-  composeEnhancer(applyMiddleware(...middlewares)),
-);
+  const store = createStore(
+    rootReducer,
+    compose(applyMiddleware(...middlewares)),
+  );
+  sagaMiddleware.run(rootSaga);
 
-sagaMiddleware.run(rootSaga);
+  return store;
+};
 
 export {
-  store,
+  configureStore,
 };

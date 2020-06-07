@@ -10,7 +10,6 @@ module.exports = {
     'lcov',
     'clover',
     'text-summary',
-    'json',
   ],
   coverageThreshold: {
     global: {

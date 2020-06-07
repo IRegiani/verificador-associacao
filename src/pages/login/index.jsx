@@ -145,12 +145,12 @@ const Login = () => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Button color="primary" id="forgotPasswordButton" onClick={() => { console.log('Open reset password modal'); history.push('/resetPassword'); }}>
+              <Button color="primary" id="forgotPasswordButton" onClick={() => history.push('/resetPassword')}>
                 Esqueceu a senha?
               </Button>
             </Grid>
             <Grid item>
-              <Button color="primary" id="signUpButton" onClick={() => { console.log('Redirect to sign up page'); history.push('/signUp'); }}>
+              <Button color="primary" id="signUpButton" onClick={() => history.push('/signUp')}>
                 Não tem acesso? Cadastre-se
               </Button>
             </Grid>
