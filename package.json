@@ -5,20 +5,22 @@
   "scripts": {
     "analyze": "npm run build && source-map-explorer 'build/static/js/*.js'",
     "clean": "rm -rf ./coverage && rm -rf ./build  && rm -rf ./node_modules",
-    "local": "react-scripts start",
-    "build": "npm run clean && npm ci && npm run test && react-scripts build",
+    "local": "webpack --config ./config/webpack.js",
+    "build": "webpack --config ./config/webpack.js",
+    "build2": "npm run clean && npm ci && npm run test && react-scripts build",
     "lint": "eslint --config .eslintrc.js --ext .jsx,.js ./src",
     "test": "npm run lint && jest --config ./config/jest.config.js --coverage",
     "test:update": "jest --config ./config/jest.config.js --coverage --updateSnapshot",
     "test:no-cov": "npm run lint && jest --config ./config/jest.config.js",
-    "styleguide": "styleguidist server",
-    "eject": "react-scripts eject"
+    "styleguide": "styleguidist server"
   },
   "dependencies": {
     "@material-ui/core": "4.9.12",
     "@material-ui/icons": "4.9.1",
     "babel-jest": "26.0.1",
+    "babel-loader": "8.1.0",
     "babel-plugin-transform-regenerator": "6.26.0",
+    "css-loader": "3.5.3",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
     "eslint": "6.8.0",
@@ -35,11 +37,12 @@
     "react-dom": "16.13.1",
     "react-redux": "7.2.0",
     "react-router-dom": "5.1.2",
-    "react-scripts": "3.4.1",
     "redux": "4.0.5",
     "redux-logger": "3.0.6",
     "redux-saga": "1.1.3",
-    "regenerator-runtime": "0.13.5"
+    "regenerator-runtime": "0.13.5",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11"
   },
   "devDependencies": {
     "@babel/preset-env": "7.9.6",

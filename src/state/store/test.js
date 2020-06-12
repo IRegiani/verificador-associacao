@@ -13,7 +13,7 @@ jest.mock('redux-logger');
 jest.mock('../reducers');
 jest.mock('../sagas');
 
-describe('Store', () => {
+describe('STATE - Store', () => {
   const devToolsComposer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
   const mockedComposerReturn = 'mockedComposerReturn';
