@@ -12,7 +12,7 @@ const configureStore = () => {
 
   // TODO: verify react-router and devtools middlewares, saga enhancers
 
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'local') {
     const logger = createLogger({ collapsed: true });
     middlewares.push(logger);
     devToolsCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
