@@ -20,7 +20,7 @@ import { requestLoginAction } from '../../state/actions';
 import { loginErrorSelector } from '../../state/selectors';
 
 import { useStyles, styles } from './style';
-import Logo from '../../static/dceLogo.png';
+import Logo from '../../static/dceLogo.svg';
 import googleIcon from '../../static/googleIcon.svg';
 
 export const Copyright = () => (

@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { Colors } from '../../constants/colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -8,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: 'center',
     height: '100%',
     display: 'flex',
-    backgroundImage: 'linear-gradient(to bottom right, white, white, rgb(242,186,0.1), rgba(217,147,5,1))',
+    backgroundImage: 'linear-gradient(white, white, rgb(242,186,0.1), rgba(217,147,5,1))',
   },
   paper: {
     margin: theme.spacing(8, 4),
@@ -34,9 +35,10 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   GoogleLogin: {
-    backgroundColor: '#ea4335', // TODO: add this to constant file
+    color: Colors.RED,
+    backgroundColor: Colors.WHITE,
     '&:hover': {
-      backgroundColor: '#ea4335',
+      backgroundColor: Colors.WHITE,
     },
   },
 }));
