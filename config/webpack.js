@@ -1,19 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const localEnv = process.env.NODE_ENV === 'local' && 'development';
 const mode = localEnv || 'production';
 const gitCommit = require('child_process').execSync('git rev-parse HEAD').toString().trim();
-// todo:
-// run lint ok
-// show git commit ok
-// uglyfy & mimify
-//  check other plugins
-//  https://github.com/jaketrent/html-webpack-template
-// dev server with hot reload, define port and host ok
-
-// TODO: use cache in eslint loader
 
 const rootPath = path.resolve(__dirname, '../');
 const srcPath = path.resolve(rootPath, 'src');
@@ -31,6 +22,7 @@ module.exports = {
   output: {
     filename: 'bundle-[hash].js',
     publicPath: '/',
+    path: path.resolve(rootPath, 'build'),
   },
   module: {
     rules: [
@@ -46,19 +38,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.html'),
       filename: 'index.html',
+      favicon: path.join(srcPath, path.join('static', 'dce.ico')),
     }),
   ],
   optimization: {
     minimize: true,
-    minimizer: [
-      new UglifyJSPlugin({
-        sourceMap: true,
-      }),
-    ],
+    minimizer: [new TerserPlugin()],
   },
   devServer: {
-    // contentBase: path.join(__dirname, 'dist'),
-    // contentBase: './dist',
     useLocalIp: true,
     historyApiFallback: true,
     compress: true,

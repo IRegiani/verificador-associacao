@@ -37,7 +37,7 @@ exports[`LoginPage renders correctly 1`] = `
       style={
         Object {
           "alignSelf": "center",
-          "background": "url(dceLogo.png) no-repeat center center",
+          "background": "url(dceLogo.svg) no-repeat center center",
           "backgroundSize": "contain",
           "height": "470px",
           "width": "100%",

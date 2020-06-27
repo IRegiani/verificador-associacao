@@ -14,5 +14,12 @@ exports[`Routes renders app correctly 1`] = `
     path="/login"
     render={[Function]}
   />
+  <Route
+    path="*"
+  >
+    <Redirect
+      to="/login"
+    />
+  </Route>
 </Switch>
 `;
