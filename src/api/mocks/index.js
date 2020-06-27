@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import userData from './user.json';
+import userData from './user';
 
 const userMockLoginResponse = (email, password) => {
   if (email === 'test@test.com' && password === 'password') return userData;

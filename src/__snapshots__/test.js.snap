@@ -7,16 +7,19 @@ exports[`Routes renders app correctly 1`] = `
     path="/"
   >
     <Redirect
-      to="/home"
+      to="/login"
     />
   </Route>
-  <Route
-    path="/home"
-    render={[Function]}
-  />
   <Route
     path="/login"
     render={[Function]}
   />
+  <Route
+    path="*"
+  >
+    <Redirect
+      to="/login"
+    />
+  </Route>
 </Switch>
 `;

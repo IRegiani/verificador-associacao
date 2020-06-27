@@ -17,7 +17,7 @@
 #### Running locally for the first time
 
 1. After cloning, run `npm ci`
-2. Run `npm run local`, it should open your browser at [http://localhost:3000](http://localhost:3000)
+2. Run `npm run local`, it should open your browser at [http://localhost:9000](http://localhost:3000)
 
 #### Developing a feature
 

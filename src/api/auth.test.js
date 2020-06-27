@@ -1,6 +1,6 @@
 import { login } from './auth';
 
-import { getConfig } from '../tempConfig';
+import { getConfig } from '../../config';
 import { mockedPost } from './mocks';
 
 jest.mock('./mocks');
