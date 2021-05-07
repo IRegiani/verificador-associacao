@@ -51,6 +51,9 @@ const styles = {
     backgroundSize: 'contain',
     alignSelf: 'center',
   }),
+  outerContainer: {
+    backgroundImage: 'linear-gradient(white, white, rgb(242,186,0.1), rgba(217,147,5,1))',
+  },
 };
 
 export {
